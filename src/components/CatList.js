@@ -1,9 +1,11 @@
-import React from React;
+import React from 'react';
 import CatDetail from './CatDetail';
 
 const Catlist = () => {
     return (
-        <div>Catlist</div>
+        <div>Catlist
+            <CatDetail />
+        </div>
     )
 };
 
