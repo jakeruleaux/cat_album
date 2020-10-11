@@ -1,8 +1,6 @@
 import React from 'react';
-import { Grid, Image } from 'semantic-ui-react';
 import pentagram from '../images/pentagram.png';
 import fire from '../images/fire.jpg';
-import record from '../images/record.png';
 import kitten1 from '../images/kitten1.png';
 import kitten2 from '../images/kitten2.png';
 import kitten3 from '../images/kitten3.png';
@@ -18,10 +16,6 @@ const backDrop = {
     paddingBottom: '100px'
 }
 
-const albumContainer = {
-
-}
-
 const albumCover = {
     width: '600px',
     height: '600px',
@@ -31,7 +25,6 @@ const albumCover = {
     backgroundPosition: 'center',
     backgroundColor: '#303030',
     textAlign: 'center',
-    // display: 'table',
     margin: '0 auto'
 }
 
@@ -83,35 +76,20 @@ const laser2 = {
     transform: 'rotate(317deg) translate(216px, 191px)'
 }
 
-const recordImage = {
-    height: '600px',
-    width: '290px',
-    backgroundImage: `url(${record})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-}
-
-
-// const pentagramStyle = {
-//     width: '500px'
-// }
-
 const Splash = () => {
     return(
         <div style={backDrop}>
-            <div style={albumContainer}>
-                <div style={albumCover}>
-                    <h1 style={bandTitle}>kittens from Hell</h1>
-                    <div style={kitten3Img}>
-                        <div style={laser1} />
-                        <div style={laser2} />
-                    </div>    
-                    <div style={kittenContainer}>
-                        <div style={kitten1Img} />
-                        <div style={kitten2Img} />
-                    </div>
-                    <h1 style={albumTitle}>the CAT Album</h1>
+            <div style={albumCover}>
+                <h1 style={bandTitle}>kittens from Hell</h1>
+                <div style={kitten3Img}>
+                    <div style={laser1} />
+                    <div style={laser2} />
+                </div>    
+                <div style={kittenContainer}>
+                    <div style={kitten1Img} />
+                    <div style={kitten2Img} />
                 </div>
+                <h1 style={albumTitle}>the CAT Album</h1>
             </div>
         </div>
     )
