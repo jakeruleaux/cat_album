@@ -21,6 +21,7 @@ const BackDrop = styled.div `
     padding-top: 100px;
     padding-bottom: 100px;
     animation: ${fade} 2s ease-in-out;
+    animation-delay: 5s;
 `
 
 const albumCover = {
@@ -90,7 +91,7 @@ const Splash = () => {
         setFade({
         fade: true
         });
-    }, 2000);
+    }, 7000);
 
     return(
         <BackDrop style={{display: fade ? 'none' : 'block' }}>
