@@ -1,20 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
+import styled, { keyframes } from 'styled-components';
+// import { keyframes } from "styled-components";
 import pentagram from '../images/pentagram.png';
 import fire from '../images/fire.jpg';
 import kitten1 from '../images/kitten1.png';
 import kitten2 from '../images/kitten2.png';
 import kitten3 from '../images/kitten3.png';
 
-const backDrop = {
-    height: '100%',
-    width: '100%',
-    backgroundImage: `url(${fire})`,
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    backgroundSize: '100% 100%',
-    paddingTop: '100px',
-    paddingBottom: '100px'
-}
+const fade = keyframes`
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+    `
+const BackDrop = styled.div `
+    height: 100%;
+    width: 100%;
+    background-image: url(${fire});
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    animation: ${fade} 2s ease-in-out;
+`
 
 const albumCover = {
     width: '600px',
@@ -77,8 +84,16 @@ const laser2 = {
 }
 
 const Splash = () => {
+    const [fade, setFade]  = useState();
+
+    setTimeout(() => {
+        setFade({
+        fade: true
+        });
+    }, 2000);
+
     return(
-        <div style={backDrop}>
+        <BackDrop style={{display: fade ? 'none' : 'block' }}>
             <div style={albumCover}>
                 <h1 style={bandTitle}>kittens from Hell</h1>
                 <div style={kitten3Img}>
@@ -91,7 +106,7 @@ const Splash = () => {
                 </div>
                 <h1 style={albumTitle}>the CAT Album</h1>
             </div>
-        </div>
+        </BackDrop>
     )
 }
 
