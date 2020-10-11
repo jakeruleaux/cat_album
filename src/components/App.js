@@ -1,12 +1,15 @@
 import React from 'react';
+import '../App.css';
 import CatList from './CatList';
+import Splash from './Splash';
 
 
 function App() {
   return (
-    <div className="App">
-      app
-      <CatList />
+    <div className="App" style={{fontFamily: 'Rock Salt'}}>
+      {/* app
+      <CatList /> */}
+      <Splash />
     </div>
   );
 }
