@@ -5,6 +5,13 @@ import { Button, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
 import CatDetail from './CatDetail';
 
+const MainContainer = styled.div `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+`
+
 const ButtonBox = styled.div `
     margin-left: 5px;
     margin-right: 5px;
@@ -56,30 +63,34 @@ class Catlist extends React.Component {
 
     render(){
         return (
-            <div>
+            <MainContainer>
                 {this.renderCat()}
-                <ButtonBox>
-                    <Button 
-                    icon 
-                    labelPosition='left'
-                    onClick={this.handlePrevClick}
-                    >
-                        Prev
-                        <Icon name='left arrow' />
-                    </Button> 
-                    <Button icon  >
-                        <Icon name='caret square up outline' />
-                    </Button>   
-                    <Button 
-                    icon 
-                    labelPosition='right'
-                    onClick={this.handleNextClick}
-                    >
-                        Next
-                        <Icon name='right arrow' />
-                    </Button>
-                </ButtonBox> 
-            </div>
+                {this.state.showCat ? 
+                    <ButtonBox>
+                        <Button 
+                        icon 
+                        labelPosition='left'
+                        onClick={this.handlePrevClick}
+                        >
+                            Prev
+                            <Icon name='left arrow' />
+                        </Button> 
+                        <Button icon  >
+                            <Icon name='caret square up outline' />
+                        </Button>   
+                        <Button 
+                        icon 
+                        labelPosition='right'
+                        onClick={this.handleNextClick}
+                        >
+                            Next
+                            <Icon name='right arrow' />
+                        </Button>
+                    </ButtonBox> 
+                :
+                ''
+                }
+            </MainContainer>
         )
     }
 };
