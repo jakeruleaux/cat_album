@@ -7,10 +7,9 @@ export const fetchCats =() => async dispatch => {
 
 };
 
+// TODO: figure out how to upload images
 export const sendCats =() => async dispatch => {
-    console.log('action2')
     const response = await catAPI.post('/upload')
-    console.log('action2', response)
     dispatch({ type: 'SEND_CATS', payload: response.data });
 
 };

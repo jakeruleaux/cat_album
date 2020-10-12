@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ImageUploader from 'react-images-upload';
 import { fetchCats, sendCats } from '../actions';
 import { Button, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
@@ -17,13 +18,20 @@ const ButtonBox = styled.div `
     margin-right: 5px;
 `
 
+const hideStyles = {
+    hieght: '20px',
+    width: '30px',
+    color: 'inherit'
+}
+
 class Catlist extends React.Component {
     constructor(props){
         super(props)
         this.state = {
             showCat: false,
-            catArr: [],
-            currentIndex: 0
+            catArr: this.props.cats,
+            currentIndex: 0,
+            pictures: []
         };
     } 
 
@@ -34,7 +42,9 @@ class Catlist extends React.Component {
 
     componentDidUpdate(prevState, prevProps){
         if (prevState.cats.length !== this.state.catArr.length) {
-            this.setState({ catArr: this.state.catArr.concat(prevState.cats)}) 
+            this.setState({ 
+                catArr: this.state.catArr.concat(prevState.cats)
+            }) 
         }
     }
 
@@ -46,16 +56,17 @@ class Catlist extends React.Component {
         this.setState({currentIndex: this.state.currentIndex - 1})
     }
 
+    handleAddCats = (picture) => {
+        this.setState({
+            pictures: this.state.catArr.concat(picture),
+        });
+    }
+
     renderCat() {
-        let props = {
-            catArr: this.state.catArr,
-            fetchCats: this.props.fetchCats,
-            sendeCats: this.props.sendCats
-        }
         return this.props.cats.map((cat, index) => {
             return (
                 <div key={cat.id}>
-                    {this.state.showCat && this.state.currentIndex === index ? <CatDetail {...props} catUrl = {cat.url} index = {this.state.currentIndex} /> : ''}
+                    {this.state.showCat && this.state.currentIndex === index ? <CatDetail catUrl = {cat.url} index = {this.state.currentIndex} /> : ''}
                 </div>
             )
         })
@@ -75,8 +86,16 @@ class Catlist extends React.Component {
                             Prev
                             <Icon name='left arrow' />
                         </Button> 
-                        <Button icon onClick={this.props.sendCats()} >
-                            <Icon name='caret square up outline' />
+                        <Button icon onClick={this.handleAddCats} >
+                            <ImageUploader
+                                withIcon={false}
+                                withLabel={false}
+                                buttonText={'add cats'}
+                                style={hideStyles}
+                                onChange={this.handleAddCats}
+                                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                                maxFileSize={5242880}
+                            />
                         </Button>   
                         <Button 
                         icon 
@@ -99,4 +118,4 @@ const mapStateToProps = (state) => {
     return { cats: state.cats };
 }
 
-export default connect(mapStateToProps, { fetchCats, sendCats })(Catlist);
+export default connect(mapStateToProps, { fetchCats })(Catlist);
