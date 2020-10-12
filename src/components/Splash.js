@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import styled, { keyframes } from 'styled-components';
-// import { keyframes } from "styled-components";
 import pentagram from '../images/pentagram.png';
 import fire from '../images/fire.jpg';
 import kitten1 from '../images/kitten1.png';
@@ -22,6 +21,7 @@ const BackDrop = styled.div `
     padding-bottom: 100px;
     animation: ${fade} 2s ease-in-out;
     animation-delay: 5s;
+    z-index: 10;
 `
 
 const albumCover = {

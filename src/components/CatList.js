@@ -1,29 +1,25 @@
-import React , { useState, useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { fetchCats } from '../actions';
 import CatDetail from './CatDetail';
 
 class Catlist extends React.Component {
-    constructor(props) {
-        super(props);
-        // this.state = [];
-      }
+    constructor(props){
+        super(props)
+        this.state = {showCat: false};
+    } 
 
     componentDidMount() {
         this.props.fetchCats();
-        console.log('here mount', this.props.cats)
+        setTimeout(() => this.setState({showCat: true}), 7000);
     }
 
-    // componentDidUpdate(prevProps, prevState) {
-    //     console.log(this.props.cats, this.props, this.state, 'update', prevProps, prevState,)
-    // }
     renderCat() {
         return this.props.cats.map(cat => {
             return (
                 <div key={cat.id}>
                     <div>
-                        <h2>{cat.url}</h2>
-                        <p>{cat.breed}</p>
+                    {this.state.showCat ? <CatDetail catUrl={cat.url} /> : ''}
                     </div>
                 </div>
             )
@@ -34,7 +30,6 @@ class Catlist extends React.Component {
         console.log(this.state, 'state in render', this.props.cats)
         return (
             <div>
-                <CatDetail />
                 {this.renderCat()}
             </div>
         )
