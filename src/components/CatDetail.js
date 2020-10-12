@@ -38,7 +38,10 @@ const CatDetail = (props) => {
             >
                 Prev
                 <Icon name='left arrow' />
-            </Button>    
+            </Button> 
+            <Button icon onClick={props.sendCats} >
+                <Icon name='caret square up outline' />
+            </Button>   
             <Button 
             icon 
             labelPosition='right'

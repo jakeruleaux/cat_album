@@ -10,6 +10,12 @@ const fade = keyframes`
     0% {opacity: 1;}
     100% {opacity: 0;}
     `
+
+const osculate = keyframes`
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+`    
+
 const BackDrop = styled.div `
     height: 100%;
     width: 100%;
@@ -70,19 +76,41 @@ const kitten3Img = {
     height: '160px'
 }
 
-const laser1 = {
-    width: '200px',
-    height: '2px',
-    backgroundColor: '#FF1493',
-    transform: 'rotate(32deg) translate(90px, -43px)'
-}
+const Laser1 = styled.div `
+    width: 200px;
+    height: 2px;
+    background-color: #FF1493;
+    transform: rotate(32deg) translate(90px, -43px);
+    animation: ${osculate} 1s ease-in-out;
+    animation-iteration-count: infinite;
+`
 
-const laser2 = {
-    width: '200px',
-    height: '2px',
-    backgroundColor: '#FF1493',
-    transform: 'rotate(317deg) translate(216px, 191px)'
-}
+const Laser2 = styled.div `
+    width: 200px;
+    height: 2px;
+    background-color: #FF1493;
+    transform: rotate(317deg) translate(216px, 191px);
+    animation: ${osculate} 1s ease-in-out;
+    animation-iteration-count: infinite;
+`
+const Laser3 = styled.div `
+    width: 200px;
+    height: 2px;
+    background-color: #FF1493;
+    transform: rotate(35deg) translate(83px,-56px);
+    animation: ${osculate} 1s ease-in-out;
+    animation-iteration-count: infinite;
+    animation-delay: .5s
+`
+const Laser4 = styled.div `
+    width: 200px;
+    height: 2px;
+    background-color: #FF1493;
+    transform: rotate(314deg) translate(208px,194px);
+    animation: ${osculate} 1s ease-in-out;
+    animation-iteration-count: infinite;
+    animation-delay: .5s
+`
 
 const Splash = () => {
     const [fade, setFade]  = useState();
@@ -98,8 +126,10 @@ const Splash = () => {
             <div style={albumCover}>
                 <h1 style={bandTitle}>kittens from Hell</h1>
                 <div style={kitten3Img}>
-                    <div style={laser1} />
-                    <div style={laser2} />
+                    <Laser1 />
+                    <Laser2 />
+                    <Laser3 />
+                    <Laser4 />
                 </div>    
                 <div style={kittenContainer}>
                     <div style={kitten1Img} />

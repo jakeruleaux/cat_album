@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchCats } from '../actions';
+import { fetchCats, sendCats } from '../actions';
 import CatDetail from './CatDetail';
 
 class Catlist extends React.Component {
@@ -22,7 +22,7 @@ class Catlist extends React.Component {
             return (
                 <div key={cat.id}>
                     <div>
-                    {this.state.showCat ? <CatDetail catUrl={cat.url} fetchCats={this.props.fetchCats} /> : ''}
+                    {this.state.showCat ? <CatDetail catUrl={cat.url} fetchCats={this.props.fetchCats} sendeCats={this.props.sendCats} /> : ''}
                     </div>
                 </div>
             )
@@ -46,4 +46,4 @@ const mapStateToProps = (state) => {
     return { cats: state.cats };
 }
 
-export default connect(mapStateToProps, { fetchCats })(Catlist);
+export default connect(mapStateToProps, { fetchCats, sendCats })(Catlist);
