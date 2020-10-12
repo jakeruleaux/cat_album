@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button, Icon } from 'semantic-ui-react'
 
 const CatBox = styled.div `
     display: flex;
@@ -21,37 +20,18 @@ const CatCard = {
 }
 
 const ButtonBox = styled.div `
-
+    margin-left: 5px;
+    margin-right: 5px;
 `
     
 const CatDetail = (props) => {   
+    
     return (
         <CatBox>
             <div>
                 <img src={props.catUrl} style={CatCard} /> 
             </div>
-        <ButtonBox>
-            <Button 
-            icon 
-            labelPosition='left'
-            // onClick={props.fetchCats}
-            >
-                Prev
-                <Icon name='left arrow' />
-            </Button> 
-            <Button icon onClick={props.sendCats} >
-                <Icon name='caret square up outline' />
-            </Button>   
-            <Button 
-            icon 
-            labelPosition='right'
-            onClick={props.fetchCats}
-            >
-                Next
-                <Icon name='right arrow' />
-            </Button>
-        </ButtonBox>    
-    </CatBox>    
+        </CatBox>    
     )
 };
 

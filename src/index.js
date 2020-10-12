@@ -6,14 +6,13 @@ import thunk from 'redux-thunk';
 import { createStore, applyMiddleware } from "redux";
 import reducers from './reducers';
 import App from './components/App';
-import './App.css';
 import * as serviceWorker from './serviceWorker';
 
 const store  = createStore(reducers, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App style={{fontFamily: 'Rock Salt'}} />
+    <App />
   </Provider>,
   document.getElementById('root')
 );
