@@ -7,8 +7,7 @@ import Splash from './Splash';
 function App() {
   return (
     <div className="App" style={{fontFamily: 'Rock Salt'}}>
-      {/* app
-      <CatList /> */}
+      <CatList /> 
       <Splash />
     </div>
   );
