@@ -75,7 +75,7 @@ class Catlist extends React.Component {
                             Prev
                             <Icon name='left arrow' />
                         </Button> 
-                        <Button icon  >
+                        <Button icon onClick={this.props.sendCats()} >
                             <Icon name='caret square up outline' />
                         </Button>   
                         <Button 

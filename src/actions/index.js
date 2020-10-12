@@ -9,7 +9,7 @@ export const fetchCats =() => async dispatch => {
 
 export const sendCats =() => async dispatch => {
     console.log('action2')
-    const response = await catAPI.put('/upload')
+    const response = await catAPI.post('/upload')
     console.log('action2', response)
     dispatch({ type: 'SEND_CATS', payload: response.data });
 
