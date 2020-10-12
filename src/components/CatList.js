@@ -6,7 +6,10 @@ import CatDetail from './CatDetail';
 class Catlist extends React.Component {
     constructor(props){
         super(props)
-        this.state = {showCat: false};
+        this.state = {
+            showCat: false,
+            catArr: []
+        };
     } 
 
     componentDidMount() {
@@ -19,7 +22,7 @@ class Catlist extends React.Component {
             return (
                 <div key={cat.id}>
                     <div>
-                    {this.state.showCat ? <CatDetail catUrl={cat.url} /> : ''}
+                    {this.state.showCat ? <CatDetail catUrl={cat.url} fetchCats={this.props.fetchCats} /> : ''}
                     </div>
                 </div>
             )
@@ -27,7 +30,6 @@ class Catlist extends React.Component {
     };
 
     render(){
-        console.log(this.state, 'state in render', this.props.cats)
         return (
             <div>
                 {this.renderCat()}
@@ -36,8 +38,12 @@ class Catlist extends React.Component {
     }
 };
 
-const mapStateToProps = (state, ownProps) => {
+// const mapDispatchToProps = dispatch => ({
+//     fetchCats: () => dispatch(fetchCats())
+//   })
+
+const mapStateToProps = (state) => {
     return { cats: state.cats };
 }
 
-export default connect(mapStateToProps,{ fetchCats })(Catlist);
+export default connect(mapStateToProps, { fetchCats })(Catlist);
