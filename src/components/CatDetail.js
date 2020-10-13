@@ -30,6 +30,7 @@ const CatDetail = (props) => {
         <CatBox>
             <div>
                 <img src={props.catUrl} style={CatCard} /> 
+                <p style={{marginLeft: '20px'}}>url: {props.catUrl}</p>
             </div>
         </CatBox>    
     )
