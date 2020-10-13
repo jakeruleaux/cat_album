@@ -3,8 +3,12 @@ import { connect } from 'react-redux';
 import ImageUploader from 'react-images-upload';
 import { fetchCats, sendCats } from '../actions';
 // import { Button, Icon } from 'semantic-ui-react';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faArrowCircleRight, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components';
 import CatDetail from './CatDetail';
+
+library.add( faArrowCircleRight, faArrowCircleLeft )
 
 const MainContainer = styled.div `
     display: flex;
