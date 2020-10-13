@@ -4,11 +4,12 @@ import ImageUploader from 'react-images-upload';
 import { fetchCats, sendCats } from '../actions';
 // import { Button, Icon } from 'semantic-ui-react';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faArrowCircleRight, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowCircleRight, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import CatDetail from './CatDetail';
 
-library.add( faArrowCircleRight, faArrowCircleLeft )
+library.add( faArrowCircleRight, faArrowCircleLeft );
 
 const MainContainer = styled.div `
     display: flex;
@@ -21,12 +22,10 @@ const ButtonBox = styled.div `
     margin-left: 5px;
     margin-right: 5px;
 `
-
-const hideStyles = {
-    hieght: '20px',
-    width: '30px',
-    color: 'inherit'
-}
+const PlayButtons = styled.div `
+    display: flex;
+    justify-content: center;
+`
 
 const Button = styled.button `
     height: 30px;
@@ -42,7 +41,8 @@ class Catlist extends React.Component {
             showCat: false,
             catArr: this.props.cats,
             currentIndex: 0,
-            pictures: []
+            pictures: [],
+            arrLength: 0
         };
     } 
 
@@ -54,17 +54,26 @@ class Catlist extends React.Component {
     componentDidUpdate(prevState, prevProps){
         if (prevState.cats.length !== this.state.catArr.length) {
             this.setState({ 
-                catArr: this.state.catArr.concat(prevState.cats)
+                catArr: this.state.catArr.concat(prevState.cats),
+                arrLength: prevState.cats.length
             }) 
         }
     }
 
     handleNextClick = () =>  {
-        this.setState({currentIndex: this.state.currentIndex + 1})
+        if (this.state.currentIndex === this.state.arrLength -1){
+            this.setState({currentIndex: 0})
+        } else {
+            this.setState({currentIndex: this.state.currentIndex + 1})
+        }
     }
 
     handlePrevClick = () =>  {
-        this.setState({currentIndex: this.state.currentIndex - 1})
+        if (this.state.currentIndex === 0){
+            this.setState({currentIndex: this.state.arrLength -1})
+        } else {
+            this.setState({currentIndex: this.state.currentIndex - 1})
+        }
     }
 
     handleAddCats = (picture) => {
@@ -89,22 +98,30 @@ class Catlist extends React.Component {
                 {this.renderCat()}
                 {this.state.showCat ? 
                     <ButtonBox>
-                        <Button 
-                        icon 
-                        labelPosition='left'
-                        onClick={this.handlePrevClick}
-                        >
-                            Prev
-                            {/* <Icon name='left arrow' /> */}
-                        </Button> 
-                        <Button 
-                        icon 
-                        labelPosition='right'
-                        onClick={this.handleNextClick}
-                        >
-                            Next
-                            {/* <Icon name='right arrow' /> */}
-                        </Button>
+                        <PlayButtons>
+                            <Button 
+                            icon 
+                            labelPosition='left'
+                            onClick={this.handlePrevClick}
+                            >
+                                Prev
+                                <FontAwesomeIcon 
+                                    icon="arrow-circle-left"
+                                    style={{marginLeft: '8px', fontSize: '16px'}}
+                                />
+                            </Button> 
+                            <Button 
+                            icon 
+                            labelPosition='right'
+                            onClick={this.handleNextClick}
+                            >
+                                Next
+                                <FontAwesomeIcon 
+                                    icon="arrow-circle-right"
+                                    style={{marginLeft: '8px', fontSize: '16px'}}
+                                />
+                            </Button>
+                        </PlayButtons>
                         <ImageUploader
                             withIcon={true}
                             buttonText='add Cat'
