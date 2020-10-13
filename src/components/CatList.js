@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ImageUploader from 'react-images-upload';
 import { fetchCats, sendCats } from '../actions';
-import { Button, Icon } from 'semantic-ui-react';
+// import { Button, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
 import CatDetail from './CatDetail';
 
@@ -23,6 +23,13 @@ const hideStyles = {
     width: '30px',
     color: 'inherit'
 }
+
+const Button = styled.button `
+    height: 30px;
+    width: 70px; 
+    padding: 2px;
+    margin: 4px;
+`
 
 class Catlist extends React.Component {
     constructor(props){
@@ -84,27 +91,23 @@ class Catlist extends React.Component {
                         onClick={this.handlePrevClick}
                         >
                             Prev
-                            <Icon name='left arrow' />
+                            {/* <Icon name='left arrow' /> */}
                         </Button> 
-                        <Button icon onClick={this.handleAddCats} >
-                            <ImageUploader
-                                withIcon={false}
-                                withLabel={false}
-                                buttonText={'add cats'}
-                                style={hideStyles}
-                                onChange={this.handleAddCats}
-                                imgExtension={['.jpg', '.gif', '.png', '.gif']}
-                                maxFileSize={5242880}
-                            />
-                        </Button>   
                         <Button 
                         icon 
                         labelPosition='right'
                         onClick={this.handleNextClick}
                         >
                             Next
-                            <Icon name='right arrow' />
+                            {/* <Icon name='right arrow' /> */}
                         </Button>
+                        <ImageUploader
+                            withIcon={true}
+                            buttonText='add Cat'
+                            onClick={this.handleAddCats}
+                            imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                            maxFileSize={5242880}
+                        />
                     </ButtonBox> 
                 :
                 ''
